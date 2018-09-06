@@ -1,0 +1,304 @@
+Listing,ListPrice,Sold,Age,SquareFeet,Beds,Baths,County,Style,Construction,Garage,Roof
+10001,202342,FALSE,4,2148,4,3,Passaic,Ranch,Brick,1 Car Attached,Shingle
+10002,168504,FALSE,25,1625,2,1,Passaic,2 Story,Frame,1 Car Detached,Shaker
+10003,232960,FALSE,27,2200,3,3,Passaic,Split Level,Stone,2 Car Attached,Composition
+10004,109140,FALSE,17,1133,2,1,Passaic,Ranch,Brick,1 Car Attached,Tile
+10005,224770,FALSE,11,2413,3,3,Passaic,Split Level,Frame,2 Car Detached,Slate
+10006,269696,FALSE,6,2876,3,1,Passaic,Ranch,Stone,1 Car Detached,Shingle
+10007,212592,FALSE,41,2119,3,2,Passaic,2 Story,Brick,Carport,Shaker
+10008,136680,FALSE,12,1375,2,1,Passaic,Split Foyer,Frame,3 Car Attached,Composition
+10009,227360,FALSE,4,2303,4,2,Passaic,Ranch,Stone,1 Car Detached,Tile
+10010,179088,TRUE,4,1837,2,2,Passaic,Ranch,Brick,2 Car Detached,Tile
+10011,233700,TRUE,25,2420,3,3,Passaic,2 Story,Frame,1 Car Detached,Slate
+10012,198144,FALSE,3,2020,4,2,Passaic,Split Level,Brick,2 Car Attached,Slate
+10013,270912,FALSE,4,2561,3,2,Passaic,Ranch,Frame,1 Car Attached,Shingle
+10014,166800,FALSE,25,1598,2,1,Passaic,2 Story,Stone,2 Car Detached,Shaker
+10015,168510,TRUE,27,1716,2,2,Passaic,Split Foyer,Brick,1 Car Detached,Composition
+10016,138990,FALSE,17,1276,2,2,Passaic,Ranch,Frame,Carport,Tile
+10017,249872,TRUE,11,2462,4,2,Passaic,Split Level,Stone,3 Car Attached,Slate
+10018,205524,FALSE,6,2182,4,3,Passaic,Ranch,Brick,1 Car Detached,Shingle
+10019,180180,TRUE,41,1896,2,1,Passaic,2 Story,Frame,2 Car Attached,Shaker
+10020,228984,TRUE,4,2293,3,2,Passaic,Ranch,Brick,2 Car Detached,Tile
+10021,208416,TRUE,12,1857,2,2,Passaic,Split Foyer,Stone,1 Car Attached,Composition
+10022,226590,FALSE,3,2461,4,2,Passaic,Split Level,Frame,1 Car Detached,Slate
+10023,275616,FALSE,4,2897,3,2,Passaic,Ranch,Stone,Carport,Shingle
+10024,183312,FALSE,25,1721,2,1,Passaic,Ranch,Brick,3 Car Attached,Shaker
+10025,176176,TRUE,4,1761,2,2,Passaic,Ranch,Brick,1 Car Attached,Shingle
+10026,225720,FALSE,27,2070,3,1,Passaic,2 Story,Frame,1 Car Detached,Composition
+10027,270655,TRUE,25,2733,4,2,Bergen,2 Story,Frame,1 Car Detached,Shaker
+10028,129780,FALSE,2,1132,2,2,Bergen,2 Story,Frame,2 Car Attached,Slate
+10029,263536,FALSE,17,2424,4,2,Bergen,2 Story,Stone,2 Car Attached,Tile
+10031,219996,FALSE,2,2275,3,1,Bergen,Split Level,Brick,1 Car Attached,Slate
+10032,258468,TRUE,6,2684,4,2,Bergen,Ranch,Frame,2 Car Detached,Shingle
+10033,194622,TRUE,41,2091,3,3,Bergen,2 Story,Stone,1 Car Detached,Shaker
+10034,190026,FALSE,2,1937,2,2,Bergen,Split Foyer,Brick,Carport,Composition
+10035,345708,TRUE,27,3627,5,2,Bergen,Split Level,Stone,2 Car Attached,Composition
+10036,122220,FALSE,4,1235,2,2,Bergen,Ranch,Frame,3 Car Attached,Tile
+10038,164436,TRUE,3,1797,2,2,Bergen,Split Level,Stone,1 Car Detached,Shingle
+10039,234036,TRUE,4,2284,4,1,Bergen,Ranch,Brick,2 Car Attached,Shaker
+10040,192864,FALSE,25,1929,2,2,Bergen,2 Story,Frame,1 Car Attached,Composition
+10042,308484,TRUE,27,2881,4,3,Bergen,Split Foyer,Stone,2 Car Detached,Tile
+10043,162288,TRUE,17,1531,2,1,Bergen,Ranch,Brick,1 Car Attached,Tile
+10044,180810,TRUE,11,1667,2,1,Bergen,Split Level,Frame,2 Car Detached,Slate
+10046,211280,TRUE,6,2213,3,3,Bergen,Ranch,Stone,1 Car Detached,Shingle
+10047,212800,TRUE,41,2253,3,2,Bergen,2 Story,Brick,Carport,Shaker
+10049,218120,FALSE,17,2102,4,3,Bergen,Ranch,Brick,1 Car Detached,Slate
+10050,224640,FALSE,11,2254,3,2,Bergen,Split Level,Frame,Carport,Shingle
+10051,240100,FALSE,6,2369,4,3,Bergen,Ranch,Stone,3 Car Attached,Shaker
+10053,356400,FALSE,2,3657,4,4,Bergen,2 Story,Brick,1 Car Detached,Composition
+10054,224640,FALSE,12,2309,4,3,Bergen,Split Foyer,Frame,2 Car Attached,Tile
+10056,265005,FALSE,4,2622,4,1,Bergen,Ranch,Stone,1 Car Attached,Shingle
+10057,200736,FALSE,3,1938,2,1,Bergen,Split Level,Brick,2 Car Detached,Shaker
+10059,234738,TRUE,12,2198,3,1,Bergen,Split Foyer,Frame,3 Car Attached,Composition
+10060,187180,FALSE,4,1890,2,2,Bergen,Ranch,Frame,1 Car Detached,Composition
+10061,140904,FALSE,2,1301,2,1,Bergen,2 Story,Stone,Carport,Tile
+10063,201786,FALSE,27,2173,3,2,Bergen,Ranch,Brick,3 Car Attached,Shingle
+10064,189711,TRUE,4,1998,2,2,Bergen,Ranch,Stone,1 Car Detached,Tile
+10066,177984,FALSE,17,1707,2,1,Bergen,Split Foyer,Frame,1 Car Detached,Shaker
+10067,303400,TRUE,3,2893,4,2,Bergen,Split Level,Brick,2 Car Attached,Slate
+10068,195160,FALSE,11,1912,2,1,Bergen,Split Level,Stone,2 Car Attached,Composition
+10069,140693,FALSE,2,1490,2,2,Bergen,Ranch,Brick,1 Car Attached,Tile
+10070,247632,FALSE,41,2369,3,2,Bergen,2 Story,Frame,2 Car Detached,Slate
+10071,246240,FALSE,12,2520,3,1,Bergen,Split Foyer,Stone,1 Car Detached,Shingle
+10073,206896,FALSE,4,2219,4,1,Bergen,Split Foyer,Brick,Carport,Shaker
+10074,172458,FALSE,3,1798,2,2,Bergen,Split Level,Frame,3 Car Attached,Composition
+10076,298980,FALSE,4,3098,4,1,Bergen,Ranch,Stone,1 Car Detached,Tile
+10078,301080,FALSE,25,3097,5,2,Bergen,2 Story,Brick,2 Car Attached,Slate
+10079,256113,FALSE,27,2459,4,1,Bergen,Split Foyer,Frame,1 Car Attached,Shingle
+10082,166320,TRUE,4,1437,2,2,Bergen,Ranch,Frame,1 Car Attached,Shingle
+10084,216480,TRUE,17,2005,3,2,Bergen,Ranch,Stone,2 Car Detached,Shaker
+10085,206514,FALSE,11,2072,4,1,Bergen,Ranch,Brick,1 Car Detached,Composition
+10089,235170,FALSE,6,2268,3,1,Bergen,Ranch,Frame,Carport,Tile
+10090,321180,TRUE,41,3086,6,2,Bergen,2 Story,Stone,3 Car Attached,Slate
+10091,119990,FALSE,2,1202,2,2,Bergen,Split Foyer,Brick,1 Car Detached,Shingle
+10095,220400,TRUE,25,2229,4,3,Bergen,2 Story,Stone,2 Car Detached,Shaker
+10096,239355,FALSE,2,2331,3,1,Bergen,Ranch,Frame,2 Car Attached,Shaker
+10098,287631,FALSE,3,2990,3,1,Bergen,Ranch,Stone,1 Car Attached,Composition
+10099,258192,FALSE,4,2489,3,1,Essex,Ranch,Brick,2 Car Detached,Tile
+10100,313432,FALSE,25,3015,5,2,Essex,2 Story,Frame,1 Car Detached,Slate
+10102,179712,FALSE,4,1854,2,2,Essex,Ranch,Brick,2 Car Detached,Tile
+10103,271872,FALSE,4,2752,4,2,Essex,Ranch,Brick,1 Car Attached,Shingle
+10104,174230,FALSE,25,1771,2,1,Essex,2 Story,Frame,1 Car Detached,Shaker
+10108,322200,FALSE,27,3276,5,3,Essex,Split Level,Stone,2 Car Attached,Composition
+10109,349050,FALSE,17,3510,6,4,Essex,Ranch,Brick,1 Car Attached,Tile
+10114,184688,TRUE,27,1899,2,2,Essex,Split Foyer,Brick,1 Car Detached,Composition
+10115,150200,FALSE,11,1652,2,2,Essex,Split Level,Frame,2 Car Detached,Slate
+10117,164436,FALSE,6,1850,2,1,Essex,Ranch,Stone,1 Car Detached,Shingle
+10120,210528,FALSE,41,1995,2,2,Essex,2 Story,Brick,Carport,Shaker
+10121,166530,FALSE,12,1676,2,1,Essex,Split Foyer,Frame,3 Car Attached,Composition
+10813,369840,FALSE,4,3772,5,4,Hudson,Ranch,Stone,1 Car Detached,Tile
+10821,326502,FALSE,3,3364,5,2,Hudson,Split Level,Brick,2 Car Attached,Slate
+10829,285824,FALSE,4,2760,4,1,Hudson,Ranch,Frame,1 Car Attached,Shingle
+10832,201720,FALSE,25,1864,2,2,Hudson,2 Story,Stone,2 Car Detached,Shaker
+10837,331335,TRUE,17,3298,4,4,Hudson,Ranch,Frame,Carport,Tile
+10840,271656,FALSE,27,2871,4,2,Hudson,Split Foyer,Brick,1 Car Detached,Composition
+10845,285360,FALSE,17,2654,3,1,Hudson,Ranch,Frame,Carport,Tile
+10846,352000,FALSE,11,3491,6,2,Hudson,Split Level,Stone,3 Car Attached,Slate
+10848,237984,FALSE,6,2264,3,1,Hudson,Ranch,Brick,1 Car Detached,Shingle
+10851,166552,FALSE,41,1623,2,1,Hudson,2 Story,Frame,2 Car Attached,Shaker
+10853,343980,FALSE,12,3673,5,4,Hudson,Split Foyer,Stone,1 Car Attached,Composition
+10854,184688,FALSE,3,1831,2,1,Hudson,Split Level,Frame,1 Car Detached,Slate
+10856,193627,FALSE,4,1912,2,1,Hudson,Ranch,Stone,Carport,Shingle
+10861,446040,FALSE,25,4099,5,1,Hudson,Ranch,Brick,3 Car Attached,Shaker
+10864,174720,FALSE,27,1667,2,1,Hudson,2 Story,Frame,1 Car Detached,Composition
+10865,179158,TRUE,11,1735,2,2,Hudson,Split Level,Stone,3 Car Attached,Slate
+10868,175336,TRUE,6,1855,2,2,Hudson,Ranch,Brick,1 Car Detached,Shingle
+10869,230580,FALSE,2,2097,4,3,Sussex,2 Story,Frame,2 Car Attached,Slate
+10872,328158,FALSE,17,3287,4,1,Sussex,2 Story,Stone,2 Car Attached,Tile
+10873,303264,TRUE,41,3008,6,1,Sussex,2 Story,Frame,2 Car Attached,Shaker
+10875,362880,TRUE,12,3402,4,4,Sussex,Split Foyer,Stone,1 Car Attached,Composition
+10877,364450,FALSE,2,3655,4,4,Sussex,Split Level,Brick,1 Car Attached,Slate
+10879,378000,FALSE,6,3496,6,3,Sussex,Ranch,Frame,2 Car Detached,Shingle
+10880,207999,FALSE,41,2190,3,3,Sussex,2 Story,Stone,1 Car Detached,Shaker
+10883,269990,FALSE,2,2574,4,3,Sussex,Split Foyer,Brick,Carport,Composition
+10884,323080,FALSE,4,3390,6,3,Sussex,Ranch,Frame,3 Car Attached,Tile
+10885,168354,FALSE,3,1651,2,2,Sussex,Split Level,Stone,1 Car Detached,Shingle
+10887,283176,FALSE,4,2608,4,1,Sussex,Ranch,Brick,2 Car Attached,Shaker
+10888,354600,TRUE,3,3623,6,4,Sussex,Split Level,Frame,1 Car Detached,Slate
+10890,182385,FALSE,25,2014,4,1,Sussex,2 Story,Frame,1 Car Attached,Composition
+10891,356184,TRUE,27,3384,5,2,Sussex,Split Foyer,Stone,2 Car Detached,Tile
+10892,315120,FALSE,17,2972,4,2,Sussex,Ranch,Brick,1 Car Detached,Slate
+10893,336336,FALSE,11,3286,6,3,Sussex,Split Level,Frame,Carport,Shingle
+10894,254030,FALSE,6,2567,3,3,Sussex,Ranch,Stone,3 Car Attached,Shaker
+10895,299880,TRUE,4,3134,5,1,Sussex,Ranch,Stone,Carport,Shingle
+10896,334620,FALSE,2,3519,6,3,Sussex,2 Story,Brick,1 Car Detached,Composition
+10897,360180,FALSE,12,3503,4,4,Sussex,Split Foyer,Frame,2 Car Attached,Tile
+10898,392370,FALSE,4,3742,4,4,Essex,Ranch,Stone,1 Car Attached,Shingle
+10899,276948,TRUE,25,2923,3,2,Essex,Ranch,Brick,3 Car Attached,Shaker
+10900,307530,FALSE,3,2955,4,3,Essex,Split Level,Brick,2 Car Detached,Shaker
+10901,322770,FALSE,4,3215,5,1,Essex,Ranch,Frame,1 Car Detached,Composition
+10903,358146,FALSE,2,3523,4,2,Essex,2 Story,Stone,Carport,Tile
+10904,231800,TRUE,27,2424,4,2,Essex,Ranch,Brick,3 Car Attached,Shingle
+10906,234036,FALSE,17,2523,3,3,Essex,Split Foyer,Frame,1 Car Detached,Shaker
+10908,403392,TRUE,11,4355,5,2,Essex,Split Level,Stone,2 Car Attached,Composition
+10909,224640,TRUE,27,2295,4,1,Essex,2 Story,Frame,1 Car Detached,Composition
+10910,163737,FALSE,2,1476,2,1,Essex,Ranch,Brick,1 Car Attached,Tile
+10911,232960,FALSE,41,2260,3,2,Essex,2 Story,Frame,2 Car Detached,Slate
+10913,223630,TRUE,12,1996,2,2,Essex,Split Foyer,Stone,1 Car Detached,Shingle
+10914,352800,TRUE,4,3673,5,1,Essex,Split Foyer,Brick,Carport,Shaker
+10916,232617,FALSE,3,2276,3,2,Essex,Split Level,Frame,3 Car Attached,Composition
+10918,219186,FALSE,4,2176,4,2,Essex,Ranch,Stone,1 Car Detached,Tile
+10919,243600,FALSE,25,2301,4,1,Essex,2 Story,Brick,2 Car Attached,Slate
+10920,277970,FALSE,27,2821,3,1,Essex,Split Foyer,Frame,1 Car Attached,Shingle
+10921,174720,FALSE,17,1610,2,1,Morris,Ranch,Stone,2 Car Detached,Shaker
+10922,307128,TRUE,2,3026,4,4,Morris,2 Story,Frame,2 Car Attached,Slate
+10923,273360,FALSE,11,2645,3,3,Morris,Ranch,Brick,1 Car Detached,Composition
+10924,273240,TRUE,6,2568,4,1,Morris,Ranch,Frame,Carport,Tile
+10925,211914,FALSE,41,2205,4,2,Morris,2 Story,Stone,3 Car Attached,Slate
+10926,305350,FALSE,2,3003,5,4,Morris,Split Foyer,Brick,1 Car Detached,Shingle
+10927,284400,FALSE,2,2838,3,2,Morris,Ranch,Frame,2 Car Attached,Shaker
+10928,252144,TRUE,17,2368,4,1,Morris,2 Story,Stone,2 Car Attached,Tile
+10929,291336,FALSE,3,2888,3,1,Morris,Ranch,Stone,1 Car Attached,Composition
+10930,294880,FALSE,4,3016,6,2,Morris,Ranch,Brick,2 Car Detached,Tile
+10932,413897,TRUE,25,4267,6,1,Morris,2 Story,Frame,1 Car Detached,Slate
+10933,216090,FALSE,4,1957,2,1,Morris,Ranch,Brick,2 Car Detached,Tile
+10935,439725,TRUE,2,4184,5,4,Morris,Split Level,Brick,1 Car Attached,Slate
+10958,315400,FALSE,4,3190,5,4,Morris,Ranch,Brick,1 Car Attached,Shingle
+10959,229878,FALSE,25,2182,3,3,Morris,2 Story,Frame,1 Car Detached,Shaker
+10966,248050,TRUE,6,2373,3,1,Morris,Ranch,Frame,2 Car Detached,Shingle
+10968,388080,TRUE,41,3934,4,1,Morris,2 Story,Stone,1 Car Detached,Shaker
+10980,340416,TRUE,2,3467,6,2,Morris,Split Foyer,Brick,Carport,Composition
+10984,314127,TRUE,4,2908,3,1,Morris,Ranch,Frame,3 Car Attached,Tile
+10990,239896,TRUE,3,2431,4,1,Morris,Split Level,Stone,1 Car Detached,Shingle
+11001,213444,TRUE,4,2307,3,1,Morris,Ranch,Brick,2 Car Attached,Shaker
+11012,324675,TRUE,25,3238,4,2,Morris,2 Story,Frame,1 Car Attached,Composition
+11025,336960,TRUE,27,3465,4,4,Morris,Split Foyer,Stone,2 Car Detached,Tile
+11028,142380,TRUE,17,1373,2,2,Morris,Ranch,Brick,1 Car Detached,Slate
+11029,300150,TRUE,11,2963,4,2,Morris,Split Level,Frame,Carport,Shingle
+11030,335320,FALSE,27,3290,6,2,Essex,Split Level,Stone,2 Car Attached,Composition
+11032,217000,FALSE,17,2233,4,3,Essex,Ranch,Brick,1 Car Attached,Tile
+11033,278400,FALSE,11,2693,4,2,Essex,Split Level,Frame,2 Car Detached,Slate
+11035,174720,FALSE,6,1694,2,1,Essex,Ranch,Stone,1 Car Detached,Shingle
+11036,175560,FALSE,41,1562,2,2,Essex,2 Story,Brick,Carport,Shaker
+11038,219996,FALSE,12,2274,4,2,Essex,Split Foyer,Frame,3 Car Attached,Composition
+11039,314000,FALSE,4,3075,6,2,Essex,Ranch,Stone,1 Car Detached,Tile
+11040,358110,FALSE,3,3532,4,2,Essex,Split Level,Brick,2 Car Attached,Slate
+11042,253368,TRUE,6,2444,3,1,Essex,Ranch,Stone,3 Car Attached,Shaker
+11043,365376,FALSE,4,3873,5,1,Essex,Ranch,Frame,1 Car Attached,Shingle
+11045,269660,TRUE,25,2812,4,3,Essex,2 Story,Stone,2 Car Detached,Shaker
+11046,356328,FALSE,27,3612,6,1,Essex,Split Foyer,Brick,1 Car Detached,Composition
+11048,221392,FALSE,17,2338,4,1,Essex,Ranch,Frame,Carport,Tile
+11049,369941,FALSE,11,3658,4,2,Essex,Split Level,Stone,3 Car Attached,Slate
+11050,293216,FALSE,6,2924,3,3,Essex,Ranch,Brick,1 Car Detached,Shingle
+11051,209286,TRUE,41,2188,4,1,Essex,2 Story,Frame,2 Car Attached,Shaker
+11052,336708,FALSE,12,3368,4,4,Essex,Split Foyer,Stone,1 Car Attached,Composition
+11053,198450,FALSE,3,1858,2,2,Essex,Split Level,Frame,1 Car Detached,Slate
+11054,341901,TRUE,2,3256,5,2,Essex,2 Story,Brick,1 Car Detached,Composition
+11055,318780,FALSE,4,3161,4,3,Essex,Ranch,Stone,Carport,Shingle
+11056,290719,FALSE,25,2673,4,2,Essex,Ranch,Brick,3 Car Attached,Shaker
+11057,268800,FALSE,27,2655,4,2,Essex,2 Story,Frame,1 Car Detached,Composition
+11058,187254,FALSE,2,1750,2,2,Essex,2 Story,Frame,2 Car Attached,Slate
+11059,234080,FALSE,17,2194,4,2,Essex,2 Story,Stone,2 Car Attached,Tile
+11061,448140,TRUE,2,4128,6,2,Essex,Split Level,Brick,1 Car Attached,Slate
+11062,239616,FALSE,6,2404,4,3,Essex,Ranch,Frame,2 Car Detached,Shingle
+11063,348840,FALSE,41,3446,6,3,Essex,2 Story,Stone,1 Car Detached,Shaker
+11065,499200,FALSE,2,4919,4,2,Essex,Split Foyer,Brick,Carport,Composition
+11066,297440,FALSE,4,2819,3,2,Essex,Ranch,Frame,3 Car Attached,Tile
+11067,217080,TRUE,3,2196,3,3,Essex,Split Level,Stone,1 Car Detached,Shingle
+11070,191456,FALSE,4,2111,3,1,Essex,Ranch,Brick,2 Car Attached,Shaker
+11071,226600,FALSE,25,2309,4,3,Essex,2 Story,Frame,1 Car Attached,Composition
+11073,342780,FALSE,27,3490,6,3,Essex,Split Foyer,Stone,2 Car Detached,Tile
+11074,463272,FALSE,17,4514,6,2,Essex,Ranch,Brick,1 Car Detached,Slate
+11076,341550,TRUE,11,3190,6,2,Essex,Split Level,Frame,Carport,Shingle
+11077,244215,TRUE,12,2354,4,1,Essex,Split Foyer,Frame,2 Car Attached,Tile
+11079,179100,TRUE,4,1946,2,1,Essex,Ranch,Stone,1 Car Attached,Shingle
+11080,376360,TRUE,3,3799,5,2,Essex,Split Level,Brick,2 Car Detached,Shaker
+11082,316800,TRUE,4,3374,5,3,Essex,Ranch,Frame,1 Car Detached,Composition
+11083,319725,FALSE,6,3059,4,1,Essex,Ranch,Stone,3 Car Attached,Shaker
+11084,386060,FALSE,2,4100,6,1,Essex,2 Story,Brick,1 Car Detached,Composition
+11085,392700,FALSE,12,3722,5,2,Essex,Split Foyer,Frame,2 Car Attached,Tile
+11086,204370,FALSE,4,2045,3,2,Essex,Ranch,Stone,1 Car Attached,Shingle
+11087,362964,FALSE,3,3716,4,4,Essex,Split Level,Brick,2 Car Detached,Shaker
+11088,184473,FALSE,4,1791,2,2,Essex,Ranch,Frame,1 Car Detached,Composition
+11089,377036,FALSE,2,3596,4,2,Essex,2 Story,Stone,Carport,Tile
+11090,216300,FALSE,27,2039,4,3,Essex,Ranch,Brick,3 Car Attached,Shingle
+11091,317680,FALSE,17,3016,4,2,Essex,Split Foyer,Frame,1 Car Detached,Shaker
+11092,277420,TRUE,11,2832,4,2,Essex,Split Level,Stone,2 Car Attached,Composition
+11093,335232,FALSE,2,3457,4,2,Essex,Ranch,Brick,1 Car Attached,Tile
+11095,210100,TRUE,41,2097,4,2,Essex,2 Story,Frame,2 Car Detached,Slate
+11096,446880,FALSE,12,4663,6,4,Essex,Split Foyer,Stone,1 Car Detached,Shingle
+11097,294920,TRUE,2,2815,3,3,Essex,2 Story,Stone,Carport,Tile
+11098,411796,TRUE,27,4337,6,1,Essex,Ranch,Brick,3 Car Attached,Shingle
+11099,209100,FALSE,4,1895,2,2,Essex,Split Foyer,Brick,Carport,Shaker
+11100,419436,FALSE,3,4478,4,2,Essex,Split Level,Frame,3 Car Attached,Composition
+11102,321360,FALSE,4,3144,5,1,Essex,Ranch,Stone,1 Car Detached,Tile
+11103,406626,FALSE,25,3881,6,2,Essex,2 Story,Brick,2 Car Attached,Slate
+11104,234495,FALSE,27,2374,4,1,Mercer,Split Foyer,Frame,1 Car Attached,Shingle
+11105,303050,FALSE,17,3319,4,4,Mercer,Ranch,Stone,2 Car Detached,Shaker
+11107,331932,FALSE,11,3299,6,3,Mercer,Ranch,Brick,1 Car Detached,Composition
+11108,228000,FALSE,6,2225,3,2,Mercer,Ranch,Frame,Carport,Tile
+11111,304920,FALSE,41,3061,6,3,Mercer,2 Story,Stone,3 Car Attached,Slate
+11112,283968,FALSE,2,2843,4,3,Mercer,Split Foyer,Brick,1 Car Detached,Shingle
+11114,351520,FALSE,2,3487,5,4,Mercer,Ranch,Frame,2 Car Attached,Shaker
+11115,240240,TRUE,3,2210,4,1,Mercer,Ranch,Stone,1 Car Attached,Composition
+11117,345015,FALSE,4,3236,4,2,Mercer,Ranch,Brick,2 Car Detached,Tile
+11118,305118,TRUE,17,2852,3,3,Mercer,Split Foyer,Frame,1 Car Detached,Shaker
+11119,351000,FALSE,25,3472,4,2,Mercer,2 Story,Frame,1 Car Detached,Slate
+11120,240350,FALSE,4,2281,4,1,Mercer,Ranch,Brick,2 Car Detached,Tile
+11121,413490,FALSE,4,3852,4,2,Mercer,Ranch,Brick,1 Car Attached,Shingle
+11122,239096,FALSE,25,2229,3,3,Mercer,2 Story,Frame,1 Car Detached,Shaker
+11123,247455,FALSE,27,2412,3,3,Mercer,Split Level,Stone,2 Car Attached,Composition
+11124,439461,FALSE,17,4157,6,4,Mercer,Ranch,Brick,1 Car Attached,Tile
+11125,248920,FALSE,11,2436,4,1,Mercer,Split Level,Frame,2 Car Detached,Slate
+11126,264600,TRUE,11,2715,4,1,Mercer,Split Level,Stone,2 Car Attached,Composition
+11127,255584,FALSE,6,2496,3,2,Mercer,Ranch,Stone,1 Car Detached,Shingle
+11129,296010,TRUE,41,2998,4,3,Mercer,2 Story,Brick,Carport,Shaker
+11130,305976,FALSE,12,2898,4,1,Mercer,Split Foyer,Frame,3 Car Attached,Composition
+11131,352044,FALSE,4,3622,6,1,Mercer,Ranch,Stone,1 Car Detached,Tile
+11132,540568,FALSE,3,5493,6,2,Mercer,Split Level,Brick,2 Car Attached,Slate
+11134,258687,FALSE,4,2444,4,3,Mercer,Ranch,Frame,1 Car Attached,Shingle
+11135,398400,TRUE,25,4011,4,3,Mercer,2 Story,Stone,2 Car Detached,Shaker
+11136,307230,FALSE,27,3136,4,2,Mercer,Split Foyer,Brick,1 Car Detached,Composition
+11138,302480,TRUE,17,2981,4,3,Mercer,Ranch,Frame,Carport,Tile
+11140,353626,FALSE,11,3617,6,4,Mercer,Split Level,Stone,3 Car Attached,Slate
+11141,379610,TRUE,2,3594,6,3,Mercer,Ranch,Brick,1 Car Attached,Tile
+11142,317564,FALSE,6,3327,4,1,Mercer,Ranch,Brick,1 Car Detached,Shingle
+11143,294516,FALSE,41,2959,3,1,Mercer,2 Story,Frame,2 Car Attached,Shaker
+11145,318384,FALSE,12,3236,5,1,Mercer,Split Foyer,Stone,1 Car Attached,Composition
+11146,369264,FALSE,3,3809,5,4,Mercer,Split Level,Frame,1 Car Detached,Slate
+11148,323950,FALSE,4,3102,6,4,Mercer,Ranch,Stone,Carport,Shingle
+11149,388080,TRUE,25,3964,4,2,Mercer,Ranch,Brick,3 Car Attached,Shaker
+11150,421200,TRUE,27,4351,6,1,Mercer,2 Story,Frame,1 Car Detached,Composition
+11152,362180,FALSE,2,3536,4,1,Mercer,2 Story,Frame,2 Car Attached,Slate
+11153,362900,TRUE,17,3930,6,4,Mercer,2 Story,Stone,2 Car Attached,Tile
+11154,366420,FALSE,2,3744,4,3,Mercer,Split Level,Brick,1 Car Attached,Slate
+11155,372450,TRUE,6,3999,5,1,Mercer,Ranch,Frame,2 Car Detached,Shingle
+11156,297480,FALSE,41,2980,3,2,Morris,2 Story,Stone,1 Car Detached,Shaker
+11157,345240,FALSE,2,3303,4,3,Morris,Split Foyer,Brick,Carport,Composition
+11158,258427,TRUE,41,2587,3,1,Morris,2 Story,Frame,2 Car Detached,Slate
+11159,362340,TRUE,12,3743,6,4,Morris,Split Foyer,Stone,1 Car Detached,Shingle
+11160,231750,FALSE,4,2361,3,3,Morris,Ranch,Frame,3 Car Attached,Tile
+11161,399960,FALSE,3,3825,5,4,Morris,Split Level,Stone,1 Car Detached,Shingle
+11162,433440,FALSE,4,4183,5,3,Morris,Ranch,Brick,2 Car Attached,Shaker
+11163,399990,FALSE,25,4002,6,3,Morris,2 Story,Frame,1 Car Attached,Composition
+11165,390060,TRUE,27,3875,4,4,Morris,Split Foyer,Stone,2 Car Detached,Tile
+11166,259080,FALSE,17,2609,3,2,Morris,Ranch,Brick,1 Car Detached,Slate
+11167,328644,FALSE,11,3256,5,3,Morris,Split Level,Frame,Carport,Shingle
+11169,353970,FALSE,6,3438,5,1,Morris,Ranch,Stone,3 Car Attached,Shaker
+11170,452088,FALSE,2,4294,4,4,Morris,2 Story,Brick,1 Car Detached,Composition
+11171,479220,TRUE,4,4862,6,3,Morris,Split Foyer,Brick,Carport,Shaker
+11173,285246,TRUE,12,2878,4,1,Morris,Split Foyer,Frame,2 Car Attached,Tile
+11174,264000,FALSE,4,2648,3,3,Morris,Ranch,Stone,1 Car Attached,Shingle
+11175,378280,FALSE,3,3908,4,1,Morris,Split Level,Brick,2 Car Detached,Shaker
+11177,269568,FALSE,4,2646,3,3,Morris,Ranch,Frame,1 Car Detached,Composition
+11178,235653,FALSE,2,2540,4,1,Morris,2 Story,Stone,Carport,Tile
+11179,200152,FALSE,27,1893,2,1,Morris,Ranch,Brick,3 Car Attached,Shingle
+11181,254410,FALSE,17,2650,4,3,Morris,Split Foyer,Frame,1 Car Detached,Shaker
+11182,472953,FALSE,11,4707,6,3,Morris,Split Level,Stone,2 Car Attached,Composition
+11184,311256,FALSE,2,3178,5,3,Morris,Ranch,Brick,1 Car Attached,Tile
+11185,342342,FALSE,41,3176,5,1,Morris,2 Story,Frame,2 Car Detached,Slate
+11187,384111,FALSE,12,3735,5,1,Morris,Split Foyer,Stone,1 Car Detached,Shingle
+11188,314356,TRUE,3,3089,5,4,Morris,Split Level,Frame,3 Car Attached,Composition
+11189,262482,FALSE,4,2821,3,1,Morris,Split Foyer,Brick,Carport,Shaker
+11190,258423,FALSE,3,2599,4,2,Morris,Split Level,Frame,3 Car Attached,Composition
+11191,280280,FALSE,4,2978,3,2,Morris,Ranch,Stone,1 Car Detached,Tile
+11192,426240,FALSE,25,4457,6,4,Morris,2 Story,Brick,2 Car Attached,Slate
+11193,233398,TRUE,27,2308,3,2,Morris,Split Foyer,Frame,1 Car Attached,Shingle
+11194,304616,FALSE,17,3126,6,3,Morris,Ranch,Stone,2 Car Detached,Shaker
+11195,266112,FALSE,11,2680,4,2,Morris,Ranch,Brick,1 Car Detached,Composition
+11196,437850,FALSE,6,4242,6,2,Morris,Ranch,Frame,Carport,Tile
+11198,292600,FALSE,41,3082,4,4,Morris,2 Story,Stone,3 Car Attached,Slate
+11199,241920,TRUE,4,2523,4,1,Morris,Ranch,Stone,1 Car Detached,Tile
+11201,317955,FALSE,2,3001,5,1,Morris,Split Foyer,Brick,1 Car Detached,Shingle
+11202,424200,FALSE,2,4140,5,1,Morris,Ranch,Frame,2 Car Attached,Shaker
+11203,388895,FALSE,3,4035,4,4,Morris,Ranch,Stone,1 Car Attached,Composition

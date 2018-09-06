@@ -1,0 +1,362 @@
+---
+title: "Assignment 2: Linear regression with interaction effect"
+author: "Andrew Abisha Hu, Elaine Su, Eric Xiong, Tianye Wang"
+date: "9/5/2018"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+Descriptions of variables:
+
+```
+Listing: ID for each house for sale
+ListPrice: the list price of the house ($)
+Sold: whether the house is sold (="TRUE") or not (="FALSE")
+Age: the age of the house (year)
+SquareFeet: the size of the house (square feet)
+Beds: the number of bedrooms in the house
+Baths: the number of bathrooms in the house
+County: the county in which the house is located
+Style: the style of the house
+Construction: the construction type of the house
+Garage: the type of garage with the house
+Roof: the type of roof of the house
+```
+
+1. Regress ListPrice on Age, SquareFeet, Beds, Baths, and County. You add County in
+the model because you suspect that location matters. Note that County is a
+categorical variable. Use “Passaic” as the reference base for County. (provide R
+codes, 0.5%)
+
+Hint: you can generate a new categorical variable x2 for an old variable x1 by
+usingrelevel (x1, ref="Y") to assign Y as the reference base for x2.
+
+
+```{r}
+library(car)
+setwd("/Users/andrewhu/Documents/GitHub/Machine-Learning/Class Practice/Assignment 2")
+prop <- read.csv("Property.csv")
+adv <- read.csv("Advertising.csv")
+birth <- read.csv("Birth.csv")
+
+
+relev <- relevel(prop$County, ref="Passaic")
+faccounty <- factor(relev)
+fit = lm(ListPrice ~Age + SquareFeet + Beds + Baths + faccounty, prop)
+```
+
+2. What is the estimation regression equation of the model in question (1)? (0.5%)
+```{r}
+summary(fit)
+```
+
+3. How do you interpret the coefficient corresponding to a particular county, say Sussex? (0.5%)
+
+```
+Overall, the list price is 7389.4 higher in County Sussex than in County Passaic
+```
+
+4. What is the residual sum of square (RSS) of this model? (0.5%)
+
+```
+47,301,793,877
+```
+
+5. You want to know whether adding County can better explain ListPrice. You run another model to regress ListPrice on the same independent variables except County. What is the residual sum of square of this new model? (provide R codes,
+0.5%)
+
+```{r}
+fit2= lm(ListPrice ~ Age + SquareFeet + Beds + Baths, prop)
+```
+
+```
+48,187,849,578
+```
+
+6. What is the difference in the degrees of freedom between the two models (with vs. withoutCounty)? (0.5%)
+
+```
+With County: 292 Without County:298 Difference:-6
+```
+
+7. What is the degree of freedom associated with the residuals of the model with County? (0.5%)
+
+```
+292
+```
+
+8. You are going to use an F test to test whether overall County has a significant effect on ListPrice. What are the null and alternative hypotheses? (0.5%)
+
+```
+H0: County doesn’t have a significant effect on listprice
+Ha: County doesn’t have a significant effect on listprice 
+```
+
+9. Use your answers to questions (4)-(7) to compute the value of the F-statistic associated with the test of the overall effect of County. (0.5%)
+
+```
+(48187849578-47301793877)/ 6 = 147,675,950.17
+47301793877/292 = 161,992,444.78
+147,675,950.17 / 161,992,444.78 = 0.9116
+```
+
+10. Use drop1() to find the p-value associated with the F-test. (provide R codes, 0.5%)
+
+```{r}
+drop1(fit, test="F")
+```
+
+```
+p-value=0.4868
+```
+
+11. What is your conclusion about the overall effect of County based on the p-value at the 0.05 significance level. (0.5%)
+
+```
+p-value>0.05, indicating that County may not be a variable that is significant in the overall model. County doesn’t have a significant effect on list price.
+```
+
+Download the Advertising.csv data on Canvas and answer the following questions. Here is the description of variables:
+
+```
+TV: TV advertising budget
+radio: radio advertising budget
+newspaper: newspaper advertising budget
+sales: product sales
+```
+
+12. sales is a nonnegative variable, so it does not follow a normal distribution. Typically,
+marketing researchers use log(sales) to deal with the issue. Regress log(sales) on
+TV,radio, and newspaper. (provide codes, 0.5%)
+
+```{r}
+logsales <- log(adv$sales)
+fit3 = lm(logsales~ TV + radio + newspaper, adv)
+```
+
+
+13. Some researchers argue that (a) the increase in sales will become smaller when using more advertising and (b) advertising should never have a negative marginal
+effect on sales. The model in question (12) can only satisfy (b) if the corresponding coefficients are positive. To satisfy both (a) and (b), you need to transform the three
+independent variables. Will you take square roots of each independent variable or adding square terms of each independent variable? Why? Create the regression
+model with the appropriate transformation. (provide R codes, 0.5%)
+
+```{r}
+sqrtTV <- sqrt(adv$TV)
+sqrtRadio <- sqrt(adv$radio)
+sqrtNP <- sqrt(adv$newspaper)
+fit4 = lm(logsales~ sqrtTV + sqrtRadio + sqrtNP, adv)
+```
+
+
+```
+We will take square roots of independent variables because it captures the diminishing
+effect of advertising on sales. As advertising increases, its marginal effect on sales should
+be smaller and smaller. advertising will never have a negative marginal effect. However,
+advertising will never have a negative marginal effect because all the coefficients for
+advertising are positive. 
+```
+
+14. Other researchers argue that while argument (a) in question (13) is true, argument
+(b) is questionable. They argue the sales may decrease if consumers are tired of too
+much advertising (i.e., supersaturation). To test their hypothesis, will you take
+square roots of each independent variable or adding square terms of each
+independent variable? Why? Create the regression model with the appropriate
+transformation. (provide R codes, 0.5%)
+
+
+```{r}
+sqTV = adv$TV^2
+sqRadio = adv$radio^2
+sqNP= adv$newspaper^2
+fit5 = lm(logsales~ TV+ sqTV +radio +sqRadio + newspaper + sqNP, adv)
+```
+
+```
+We choose to add square terms in addition to the original independent variables because the coefficients for the square terms are negative, which capture the negative effect of having too much advertising. On the other hand, if we choose to take square root of the independent variables, we will never have negative coefficients for the square root terms because if the coefficients for the square root terms are negative, advertising will always have a negative effect on sales regardless of how much the company spend on advertising.
+The plot may look similar to this: (y = x - x^2) → Inverted U-Shape
+```
+
+15. Based on your findings from the model in question (14), supersaturation may
+describe the effect of advertising through which media(s)? Why? (0.5%)
+
+```
+Supersaturation may describe the effect of advertising through all the media (TV,Radio
+and Newspaper), because the coefficients for all of the square terms are negative,
+indicating that sales will decrease after a certain point.
+```
+
+16. Compute the VIF value for the model in question (14). Given your goal is to test the
+theory about supersaturation, how should you react to the VIF value? (Provide R
+codes, 0.5%)
+
+```{r}
+vif(fit5)
+```
+
+```
+Overall, all the variables have high VIF values, especially for TV, sqTV, radio and
+sqRadio. Their VIF (>10) indicates serious multicollinearity problems. However, since
+we are testing the theory about supersaturation, and choose to add in their square terms, it
+is obvious that square terms will have high correlation with independent variables and
+thus we may take VIF simply as a reference and it’s not a big concern here. 
+```
+
+17. Some IMC researchers focus on the synergy of advertising via different
+communication platforms. Use the original scale of independent variables and
+create a model that can test the synergy between any two of all media. (provide R
+codes, 0.5%)
+
+```{r}
+fit6 = lm(logsales~TV +radio+ newspaper + TV:radio+ TV:newspaper + radio:newspaper, adv)
+```
+
+18. Expand the model in question (17) by further considering the specification to test
+supersaturation. (provide R codes, 0.5%)
+
+```{r}
+fit66 = lm(logsales~ TV+ radio + newspaper + sqTV + sqRadio + sqNP + TV:radio + TV:newspaper + radio:newspaper, adv)
+```
+
+19. A multiplicative model implicitly assumes the synergy between all independent variables because the dependent variable can be viewed as an outcome of the
+multiplication of independent variables. Create a multiplicative model to explain sales by the three advertising variables. (provide R codes, 0.5%)
+
+Hint: use log(x+1) if the minimum of x is 0.
+
+```{r}
+logTV <- log(adv$TV)
+logRadio <- log(adv$radio+1)
+logNP <- log(adv$newspaper)
+fit7 = lm(logsales~ logTV + logRadio + logNP)
+```
+
+```
+Sales = TV*Radio*Newspaper
+log(Sales) = log(TV*Radio*Newspaper) = log(TV) + log(Radio) + log(Newspaper)
+```
+
+20.Based on the results of the multiplicative model, when TV increases by one percent,
+what is the percentage change of sales? (0.5%)
+
+```
+0.351882 percentage change.
+```
+
+21.Which of the following properties are also considered in a multiplicative model
+(0.5%)?
+
+```
+(a) the increase in sales will become smaller when using more advertising
+(b) advertising should never have a negative effect on sales
+```
+22. Based on the result of the multiplicative model, what is the mean predicted sales if
+TV =20, radio = 0, and newspaper = 1. (0.5%)
+
+```{r}
+exp(predict(fit7,data.frame(TV = 20,radio = 0, newspaper = 1))+anova(fit7)[4,3]/2)
+```
+
+23. Suppose you do not have any theoretical support to select a model. What you want is a
+model that can fit the data the best (i.e., explain the variation of the dependent
+variable the most), considering the number of variables used in the model. In this
+case, which statistic measure reported by summary() is suitable for model selection?
+(0.3%)
+
+```
+Adjusted R-square
+```
+24. Based on the statistic measure you selected in question (23), which model should you
+pick? (0.2%)
+
+```
+The multiplicative model →Adjusted R-square of 0.9431, highest among all models
+```
+
+Download the Birth.csv data on Canvas and answer the following questions. Here is the
+description of variables:
+
+```
+Age: age group of the respondent (<25, 25-29, 30-39, 40-49)
+Education: education level of the respondent (Lower or Upper)
+Desire: desire to have more children (Yes or No)
+Use: Contraceptive use (Yes or No)
+Total: number of respondents in the category
+```
+
+25. You want to study what affects the use of contraception. You think Desire must be one
+key reason, Education could also matter. You are not sure about Age, but you would like to
+try it. And you think Desire may depend on Age and thus consider the interaction term
+between the two factors. Run a logistic regression and specify the model as discussed above.
+(provide R codes, 0.5%)
+
+```{r}
+fit8= glm(Use~ Desire*Age + Education, family=binomial,data=birth, weight=Total)
+```
+
+26. What is the estimated regression function of the logistic regression in question (25)?
+(0.5%) Hint: the left-hand side of the function is logit(Use).
+
+```
+logit(Use) = -(1.75336)-DesireYes*(0.06634)+Age25-29*(0.65489)+Age30-39*(1.66644)
++Age40-49*(1.95177)+EducationUpper*(0.36010)-DesireYes:Age25-29*(0.25881)-
+DesireYes:Age30-39*(1.15124)-DesireYes:Age40-49*(1.36186)
+```
+
+27. On average, what is the difference in logit(Use) between people in their forties who still
+want more kids and those who do not want more kids? (0.3%)
+
+```
+-1.36186-0.06634 = -1.4282
+```
+
+28. Is the difference in question (27) statistically different from zero at a 0.01 significance
+level? (0.2%)
+
+```
+Yes, because p-value for the interaction effect between DesireYes and Age 40-49 is smaller than
+0.01.
+```
+
+29. Based on the model, what is the predicted percentage of using contraception for people
+in their thirties with upper education and no desire to have more children? (0.5%)
+
+```
+0.2731804
+```
+
+30. You want to combine people less than 30 years old in one group, but you are not sure
+whether people below 25 and people among 25-29 show significantly different behavior.
+Therefore, you decided to run a likelihood ratio test. You run a new model as what you did
+for question (25) except that there are only three Age groups this time (<29, 30-39, 40-49).
+What is the value of -2log-likehood of this new model? (provide R codes, 0.5%)
+
+```{r}
+levels(birth$Age) <- c("<29","<29", "30-39", "40-49")
+cont2 = glm(Use~Desire + Age + Education + Desire*Age, birth, family=binomial, weight= Total)
+
+-2*logLik(cont2)
+```
+
+31. To perform a likelihood ratio test, you still need (a) the -2log-likehood for the original
+model in question (25) and (b) the difference in the degree of freedom of the two models.
+Collect the information you need. What is the p-value of the likelihood ratio test? (provide
+R codes, 0.3%)
+
+```{r}
+-2*logLik(cont2)
+1-pchisq(1862.861 - 1855.454,2)
+```
+
+```
+Original model: 1855.454 (df=9)
+p-value = 0.02463715
+```
+
+32. Give a 0.05 significance level, should you combine the two Age groups <25 and 25-29 as
+one group? (0.2%)
+
+```
+The p value (< .05) indicates that we can reject 0 and conclude that at least one predictor is
+different from 0. Therefore, adding two different age groups is highly significant and we
+shouldn’t combine the two age groups as one group.
+```
