@@ -1,0 +1,356 @@
+---
+title: "Assignment 3 :glm and MSE practice"
+author: "Andrew Abisha Hu, Elaine Su, Eric Xiong, Tianye Wang"
+date: "9/5/2018"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+A marketing research company conduct a survey to investigate consumers’ willingness to
+try anew energy drink. Download energy.csv on Canvas and answer the following
+questions. Here is the description of variables:
+
+```
+sex: sex of the respondent (0 = female, 1 = male)
+age: age group of the respondent (10-19, 20-29, 30-39)
+exercise: self-reported exercise frequency (0 = less than twice/week, 1 = at least
+twice/week)
+innovation: a composite index of the respondent’s tendency to try new things
+user: energy drink user (0 = never drink any energy drink, 1 = others)
+try: try the new energy drink after reading its advertising flyer (0 = no, 1 = yes)
+train: training data set (if TURE)
+cv: indicators for 5-fold cross validation (data sets 0 - 4)
+```
+
+1. Use only the training data set to run a Probit model. Predict try by all other
+variables except for train and cv. (provide R codes, 0.5%)
+
+```{r}
+library(car)
+library(pROC)
+setwd("/Users/andrewhu/Documents/GitHub/Machine-Learning/Class Practice/Assignment 3-glm")
+energy <- read.csv("energy.csv")
+baseball <- read.csv("baseball.csv")
+
+fit = glm( try~sex+age + exercise+ innovation +user, data= energy, family=binomial(link="probit"), subset= (train==T))
+```
+
+
+2. Compute p-value for the overall model significant. (provide R codes, 0.3%)
+
+```{r}
+1- pchisq(fit$null.deviance- fit$deviance, 6)
+```
+
+
+3. Based on the p-value, what is your conclusion? (0.2%)
+```
+We can reject the null hypothesis → we conclude that at least one variable has a significant effect on the model.
+```
+
+4. Now use the test data set (i.e., non-training data set) to compute the classification
+rate. You consider that a respondent will try the new energy drink if the predicted
+probability is at least 0.5. (provide R codes, 0.5%)
+
+```{r}
+tab= table(energy$try[energy$train==FALSE],predict(fit,energy[energy$train==FALSE,], type="response")>.5)
+sum(diag(tab))/ sum(tab)
+```
+
+5. You suspect that males who exercise at least twice per week may be more likely to try the new product than other males. How will you expand the Probit model to test your hypothesis? (provide R codes, 0.5%)
+
+```{r}
+fit2 = glm(try~sex +age+ exercise + innovation + user +sex* exercise, data=energy, family=binomial(link="probit"), subset=c(train==T))
+```
+
+6. What is the 99% confidence interval of the coefficient of the new variable you
+added? Based on the confidence interval, what is your conclusion? (provide R codes,
+0.5%)
+
+```{r}
+confint(fit2, level=.99)
+```
+
+```
+[0.1650906, 0.7871330] → does not include 0, so we can conclude that at the 0.01 level,
+there is a significant difference between males who exercise at least twice per week and
+males who exercise less than twice a week.
+```
+
+7. Find AIC of the two models. Based on AIC, would you prefer the original model or
+the expanded one? (0.5%)
+
+```
+AIC of original model: 2451.3
+AIC of expanded model: 2437.7
+The expanded model is better than the original model as it has a lower AIC. Also, the
+difference of their AIC is larger than 10, which is a strong evidence in favor of the lower
+AIC model (the expanded model)
+```
+
+8. Now use the test data set (i.e., non-training data set) and compute the classification
+rate of the expanded model. You consider that a respondent will try the new energy
+drink if the predicted probability is at least 0.5. (provide R codes, 0.5%)
+
+```{r}
+tab2 = table(energy[energy$train==FALSE,]$try, predict(fit2, energy[energy$train==FALSE,], type= "response")>.5)
+sum(diag(tab2))/sum(tab2)
+```
+
+9. Use the test data set to create ROC plots and compute AUC for both models.
+(provide R codes, 0.5%)
+
+```{r}
+plot.roc(energy$try[energy$train==F], predict(fit,energy[energy$train==F,],type="response"), data=energy, legacy.axes=T, print.auc=T, print.auc.x=1, print.auc.y=.9)
+
+#plot.roc(energy[energy$train==F,]$try, predict(fit2,energy[energy$train==F,],type="response"), data=energy, add=T,col=2, print.auc=T, print.auc.x=.5, print.auc.y=.4, print.auc.col=2)
+```
+
+
+10. Based on AUC, would you prefer the original model or the expanded one? (0.5%)
+
+```
+We can see that the original model has a slightly higher AUC, which is preferred over the
+expanded model as it indicates higher accuracy
+```
+
+11. Do you reach the same conclusion when using AIC and AUC? Discuss what might happen. (0.5%)
+
+```
+No. The expanded model has lower AIC in the training data set, which means that the
+expanded model has higher predictive accuracy in the training data set than the original
+model. However, the reason is that the expanded model may overfit the training data set
+and only capture the idiosyncrasies of this particular data set but may not predict well for
+other data sets. This is why when we use test data set to do out-of-sample prediction, the
+expanded model has lower AUC than the original one. Using in-sample AIC can be too
+optimistic in evaluating prediction accuracy. 
+```
+
+12. Use cv to perform 5-fold cross validation for the original model in Question 1.
+Compute the AUC for each fold. What is the average AUC over the 5 folds?
+(provide R codes, 0.5%) Hint: you can use auc(true responses, predicted
+probabilities) in the pROCpackage to compute AUC.
+
+```{r}
+yhat = rep(NA, nrow(energy))
+
+for (i in 0:4) {
+        fit3 = glm(try~sex + age + exercise + innovation + user, data=energy, family=binomial(link="logit"), subset= (cv!=i)) 
+        yhat[energy$cv==i] = predict(fit3, energy[energy$cv==i,])
+        
+}
+mean((energy$try-yhat)^2)
+auc(energy$try, yhat)
+```
+
+13. Repeat question (12) for the expanded model. What is the average AUC over the 5
+folds? (provide R codes, 0.5%)
+
+```{r}
+yhat2 = rep(NA, nrow(energy))
+
+for (i in 0:4) {
+        fit4 = glm(try~sex + age + exercise + innovation + user + sex*exercise, data=energy, family=binomial(link="logit"), subset= (cv!=i)) 
+        yhat2[energy$cv==i] = predict(fit4, energy[energy$cv==i,])
+        
+}
+mean((energy$try-yhat2)^2)
+auc(energy$try, yhat2)
+
+```
+
+14. Based on the average AUC you obtained from question (12) and (13), comment on
+which model is preferred. (0.5%)
+Hint: you may want to consider the principle of parsimony.
+
+```
+We want to build a parsimonious model with good predictive accuracy. According to the
+average AUC obtained, the original model is preferred as it has a slightly higher AUC,
+which means that it has a stronger predictive power. If a variable doesn’t contribute much
+to prediction we don’t necessarily need to include it
+```
+
+---
+
+
+Download baseball.csv and answer the following questions. Here is some background
+information of the data: “The baseball salary data set is available through the Journal of
+StatisticsEducation (JSE) data archive. The data set contains salary information for 337
+Major League Baseball (MLB) players who are not pitchers and played at least one game
+during both the 1991 and 1992 seasons. The purpose of the study is to determine whether a
+baseball player's salary is a reflection of his offensive performance. For each player, the
+salary from the 1992 season along with 12 offensive statistics from the 1991 season were
+collected. In addition to these variables,there are 4 indicator variables which identify free
+agency and eligibility for
+arbitration.”(https://www4.stat.ncsu.edu/~boos/var.select/baseball.html)
+
+```
+y: Salary (in thousands of dollars)
+x1: Batting average
+x2: On-base percentage
+x3: Number of runs
+x4: Number of hits
+x5: Number of doubles
+x6: Number of triples
+x7: Number of home runs
+x8: Number of runs batted in
+x9: Number of walks
+x10: Number of strike-outs
+x11: Number of stolen bases
+x12: Number of errors
+x13: Indicator of "free agency eligibility"
+x14: Indicator of "free agent in 1991/2"
+x15: Indicator of "arbitration eligibility"
+x16: Indicator of "arbitration in 1991/2"
+```
+
+15. Full model: Use only the first 200 observations (i.e., the training data set) to regress
+log(y)on all predictors. (provide R codes, 0.5%)
+
+```{r}
+train= baseball[c(1:200),]
+test= baseball[-c(1:200),]
+fit5 = lm(log(y)~.,data=train)
+```
+
+
+16. Define the square error of an observation as (log(y) – log(y)_hat)^2. Use the full model
+to compute the average square error of the test set (i.e., the last 137 observations). (provide
+R codes, 0.5%)
+
+```{r}
+mean((log(baseball$y[-c(1:200)])-predict(fit5,test))^2)
+```
+
+
+17. Use the training data set and perform a backward selection for the model. (Provide R
+codes, 0.5%)
+
+```{r}
+fit6 = lm(log(y)~.,train)
+step(fit6)
+```
+
+18. What is the estimated regression equation after the backward selection? (0.5%)
+
+```{r}
+summary(lm(formula= log(y)~ x8 +x9+ x10+x11+x13+ x14+ x15 ,train))
+```
+
+19.  Use the backward selection regression to compute the average square error of the test
+set. (provide R codes, 0.5%)
+
+```{r}
+fit7 = lm(formula= log(y)~ x8+ x9+ x10+x11+x13+ x14+ x15, train)
+mean((log(baseball$y[-c(1:200)])-predict(fit7,test))^2)
+```
+
+20. Use the training data set and perform a forward selection, starting with only the
+intercept and considering all predictors. (Provide R codes, 0.5%)
+
+```{r}
+fit8 = lm(log(y)~1, train)
+step(fit8, scope=~x1+x2+x3+x4+x5+x6+x7+x8+ x9+ x10+x11+x12+x13+ x14+ x15+x16, direction="forward")
+```
+
+21. What is the estimated regression equation of the forward selection? (0.5%)
+
+```{r}
+summary(lm(formula=log(y)~ x3+x13+x15+x8+x12,train))
+```
+
+22. Use the forward selection regression to compute the average square error of the test set.
+(provide R codes, 0.5%)
+
+```{r}
+fit9 = lm(log(y)~x3 + x13+ x15 + x8 + x12, train)
+mean((log(baseball$y[-c(1:200)])-predict(fit9,test))^2)
+```
+
+23. Does every variable selected by iterative model selection methods have significant
+effects on the dependent variable? Run a model with only selected variables to show your
+answer. (0.5%)
+
+```
+Not every variable selected by iterative model selection methods have significant effects on the
+dependent variable
+```
+
+24. Why do you think iterative model selection methods will or will not pick only variables
+with significant effects? (0.5%)
+
+```
+Iterate model selection methods selects the model based on AIC values, not p-values. The goal is
+to find the model with the smallest AIC by removing or adding variables in the scope
+```
+
+25. Use the training data set to run a ridge regression with all predictors. Set the random
+seed as set.seed(12345) and use glmnet with 5-fold cross validation to find the optimal
+lambda with [0,1] (i.e., seq(0,1,0.0001)). What is the optimal lambda value? (provide R
+codes, 0.5%)
+
+```{r}
+library(glmnet)
+lam= seq(0,1,0.0001)
+set.seed(12345)
+fit10= cv.glmnet(as.matrix(baseball[1:200, 2:17]), log(baseball$y[1:200]), alpha=0,nfolds=5, lambda=lam)
+fit10$lambda.min
+```
+
+26. What is the estimated regression equation of the ridge model with the optimal lambda
+value? (0.5%)
+
+```{r}
+summary(fit10)
+```
+
+27. Use the ridge regression with the optimal lambda value to compute the average square
+error of the test set (provide R codes, 0.5%).
+
+```{r}
+newx = model.matrix(log(y)~. , test)[,2:17]
+mean((log(baseball$y[-c(1:200)])-predict(fit10, newx, s="lambda.min"))^2)
+```
+
+28. Use the training data set to run a lasso regression with all predictors. Set the random
+seed asset.seed(12345) and use glmnet with 5-fold cross validation to find the optimal
+lambda with [0,1] (i.e., seq(0,1,0.0001)). What is the optimal lambda value? (provide R
+codes, 0.5%)
+
+```{r}
+set.seed(12345)
+fit11= cv.glmnet(as.matrix(baseball[1:200,2:17]), log(baseball$y[1:200]), alpha=1, nfolds=5, lambda=lam)
+fit11$lambda.min
+```
+
+29. Use the training data and the optimal lambda value to run a lasso regression. What is
+the estimated regression equation of the lasso model? (0.5%)
+
+```{r}
+summary(fit11)
+```
+
+30.Use the lasso regression with the optimal lambda value to compute the average square
+error of the test set (provide R codes, 0.5%)
+
+```{r}
+newx2 = model.matrix(log(y)~. ,test)[,2:17]
+mean((log(baseball$y[-c(1:200)])-predict(fit11, newx2, s= "lambda.min"))^2)
+```
+
+31. Comment on the performance of the full, backward, forward, ridge, and lasso models in
+predicting the test data set. (0.5%)
+
+```
+Full model square error: 0.3452043
+Backward model square error: 0.3510936
+Forward model square error: 0.3714355
+Ridge model square error: 0.3437116
+Lasso model square error: 0.374002
+```
+
+```
+Ridge > Full > Backward > Forward > Lasso
+Among all methods, the Ridge model has the best performance on predicting the test data set
+```

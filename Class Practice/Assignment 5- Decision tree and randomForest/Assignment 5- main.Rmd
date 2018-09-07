@@ -1,0 +1,227 @@
+---
+title: "Assignment 5-Decision tree and randomForest"
+author: "Andrew Abisha Hu, Elaine Su, Eric Xiong, Tianye Wang"
+date: "9/6/2018"
+output: html_document
+---
+
+Here is the description of variables:
+
+```
+category: the category to which the project belongs
+goal: the project’s raising goal ($)
+pledged: $ pledged at the end of the fund-raising period
+funded: “TRUE” if the goal is achieved (i.e., pledged >= goal); “FALSE” otherwise
+blurb_adj: ratio of counts of adjectives to total word counts of the blurb
+blurb_noun: ratio of counts of nouns to total word counts of the blurb
+blurb_verb: ratio of counts of verbs to total word counts of the blurb
+blurb_total: total word counts of the blurb on the project page
+full_adj: ratio of counts of adjectives to total word counts of the main content
+full_noun: ratio of counts of nouns to total word counts of the main content
+full_verb: ratio of counts of verbs to total word counts of the main content
+full_total: total word counts in the main content the project page
+train: = 1 if the project is in the training set and 0 otherwise
+```
+
+1. Use the training data set to create a regression tree and predict pledged by only
+full_total. Use mindev=1e-6 to overgrow the tree. Plot the partition of the tree model.
+(provide R codes, 0.5%)
+
+```{r setup, include=FALSE}
+setwd("/Users/andrewhu/Documents/GitHub/Machine-Learning/Class Practice/Assignment 5- Decision tree and randomForest")
+
+library(tree)
+ks <- read.csv("KickStarter2.csv")
+kick <- read.csv("KickStarter2.csv")
+
+
+attach(ks)
+fit= tree(pledged~full_total,data=kick[kick$train==1,],mindev=1e-6)
+
+partition.tree(fit, main="Fitted Function")
+```
+
+
+2. Prune the tree in Question (1) by requesting the number of terminal nodes to be 8. Plot
+the decision tree and the partition of the pruned tree model.
+```{r }
+fit2 = prune.tree(fit, best=8)
+par(mfrow=c(1,2))
+plot(fit2, type= "uniform")
+text(fit2, cex=.7)
+partition.tree(fit2, cex=.8)
+```
+
+3. According to the pruned tree, for a project with content in 1800 words, what is the
+predicted pledged amount? How many projects in the data also have the same predicted
+value? (0.5%)
+
+```{r}
+predict(fit2, data.frame(full_total=1800))
+sum(ifelse(full_total==1800,1,0))
+```
+
+4. Use the training data set to create a regression tree to predict pledged by all variables
+except funded. Use mindev=1e-6 to overgrow the tree and then prune it by requesting the
+number of terminal nodes to be 10. Plot the decision tree and label the decision tree plot.
+What are the key predictors used to split this tree?
+
+```{r}
+fit3= tree(pledged~category+goal+blurb_adj+blurb_noun+blurb_verb+blurb_total+full_adj+full_noun+full_verb+full_total,data=kick[kick$train==1,],mindev=1e-6)
+
+
+fit4 = prune.tree(fit3,best=10)
+
+plot(fit4, type="uniform")
+text(fit4)
+```
+
+```
+full_total, goal, category, blurb_verb, full_noun
+```
+
+5. Further prune the tree you pruned in question (4) by requesting six terminal nodes.
+Which predictor is no longer a key predictor after you re-prune the tree?
+
+```{r}
+fit5 = prune.tree(fit4,best=6)
+plot(fit5, type= "uniform")
+text(fit5)
+```
+
+
+```
+full_noun
+```
+
+6. Use the testing set to compute MSE = mean((pledged – pledged_hat)2) for the two
+pruned tree models in Questions (4) and (5). Which one performs better in terms of test
+MSE? (provide R codes, 0.5%)
+
+```{r}
+yhat1<- predict(fit4,ks[train==0,])
+yhat2<- predict(fit5,ks[train==0,])
+
+mean((ks$pledged[!train]-yhat1)^2, na.rm=T)
+mean((ks$pledged[!train]-yhat2)^2, na.rm=T) #better
+```
+
+7. According to the better tree in Question (6), what is the predicted pledged amount for
+an art project with a goal of $10000 if the campaign runner writes 10 words in the blurb
+with 4 verbs and 1000 words in the main content with 124 nouns? (0.5%)
+
+```{r}
+predict(fit5, data.frame(category="Art",goal=10000,blurb_total=10,blurb_verb=0.4,full_total=1000,full_noun=0.124,blurb_adj=0,blurb_noun=0,full_adj=0,full_verb=0))
+```
+
+8. Use the training data set to run “bagging” by using the randomForest() function and
+predict pledged by all variables except funded. Create a chart to show the importance of
+predictors in terms of %IncMSE. What are the three most important predictors? Use
+set.seed(12345) to specify the random seed. (provide R codes, 1%)
+
+```{r}
+library(randomForest)
+set.seed(12345)
+
+fit8= randomForest(pledged~category+goal+blurb_adj+blurb_noun+blurb_verb+blurb_total+full_adj+full_noun+full_verb+full_total,data=kick[kick$train==1,],mtry=10,importance=T)
+
+varImpPlot(fit8)
+```
+
+9. Now use the training data set to run “random forest” by using the randomForest()
+function and predict pledged by all variables except funded. Create a chart to show the
+importance of predictors in terms of %IncMSE. What are the three most important
+predictors? Use set.seed(12345) to specify the random seed. 
+
+```{r}
+set.seed(12345)
+
+fit9= randomForest(pledged~category+goal+blurb_adj+blurb_noun+blurb_verb+blurb_total+full_adj+full_noun+full_verb+full_total,data=kick[kick$train==1,],importance=T)
+
+varImpPlot(fit9)
+```
+
+
+10. Compute test MSE for the bagging and random forest models in Questions (8) and (9).
+Which one performs better in terms of test MSE?
+
+```{r}
+yhat3<- predict(fit8,ks[train==0,])
+yhat4<- predict(fit9,ks[train==0,])
+
+mean((kick$pledged[train==0]-yhat3)^2, na.rm=T)
+mean((kick$pledged[train==0]-yhat4)^2, na.rm=T)
+#randomForest is better
+```
+
+11. Create a partial dependence plot to depict the marginal effect of full_total using the
+random forest model with the test data.
+
+```{r}
+fit= randomForest(pledged~category+goal+blurb_adj+blurb_noun+blurb_verb+blurb_total+full_adj+full_noun+full_verb+full_total,data=kick[kick$train==1,],importance=T)
+
+partialPlot(fit, kick[kick$train==0,], full_total)
+```
+
+12. Use the training data and run a “random forest” to predict funded by all variables
+except pledged. Create a chart to show the importance of predictors in terms of
+MeanDecreaseAccuracy. What are the three most important predictors? Use
+set.seed(12345) to specify the random seed. 
+
+```{r}
+fit= randomForest(as.factor(funded)~category+goal+blurb_adj+blurb_noun+blurb_verb+blurb_total+full_adj+full_noun+full_verb+full_total,data=kick[kick$train==1,],importance=T)
+
+varImpPlot(fit)
+```
+
+13. Based on your findings, would you conclude that full_total has a causal effect on
+funded? Why? 
+
+```
+Yes, because it is the most important predictor of funded according to MeanDecreaseAccuracy
+in the random forest model.
+```
+
+---
+
+FordUS.csv records the number of vehicles sold under the brand “Ford” in the US from
+July 2011 to February 2018. (data from
+http://shareholder.ford.com/financials/monthly-sales-reports).
+
+```
+Month: the calendar month
+US_sales: the number of vehicles sold under the brand “Ford” in the US in the
+month
+```
+
+14. Read the data into R and use ts() to make US_sales a time-series object in R. Create a
+plot of US_sales over time. 
+
+```{r}
+ford<- read.csv("FordUS.csv")
+attach(ford)
+ts= ts(US_sales, start=c(2011,7), frequency = 12)
+plot(ts, type="b")
+```
+
+15. Based on the trajectory of US_sales over time, comment on the trend and seasonality
+of the sales. Which model may better describe the data, an additive model or a
+multiplicative model? Why?
+
+```
+Since the amplitude of seasonality seems constant, an additive model may better describe the
+data.
+```
+
+16. Use the data from July 2011 to June 2017 as your training data and the rest as your
+test data. Fit the training data with an additive Halt-Winters model. What are the values of
+the smoothing parameters: alpha, beta, and gamma? (provide R codes, 0.5%) Hint: use
+window() to obtain a subset of a time-series object
+
+
+```{r}
+train= window(ts, start=c(2011,7), end=c(2017,6))
+fit9 =HoltWinters(train)
+fit9
+
+```
