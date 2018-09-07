@@ -29,8 +29,8 @@ train: = 1 if the project is in the training set and 0 otherwise
 full_total. Use mindev=1e-6 to overgrow the tree. Plot the partition of the tree model.
 (provide R codes, 0.5%)
 
-```{r setup, include=FALSE}
-setwd("/Users/andrewhu/Documents/GitHub/Machine-Learning/Class Practice/Assignment 5- Decision tree and randomForest")
+```{r}
+setwd("/Users/andrewhu/Documents/GitHub/Machine-Learning/Assignment 5- Decision tree, randomForest and TimeSeries")
 
 library(tree)
 ks <- read.csv("KickStarter2.csv")
@@ -39,7 +39,6 @@ kick <- read.csv("KickStarter2.csv")
 
 attach(ks)
 fit= tree(pledged~full_total,data=kick[kick$train==1,],mindev=1e-6)
-
 partition.tree(fit, main="Fitted Function")
 ```
 
