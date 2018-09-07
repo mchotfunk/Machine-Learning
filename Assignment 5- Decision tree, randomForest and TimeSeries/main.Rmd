@@ -1,8 +1,10 @@
 ---
-title: "Assignment 5-Decision tree and randomForest"
+title: "Assignment 5-Decision tree, randomForest and Time Series"
 author: "Andrew Abisha Hu, Elaine Su, Eric Xiong, Tianye Wang"
 date: "9/6/2018"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 Here is the description of variables:
@@ -223,5 +225,80 @@ window() to obtain a subset of a time-series object
 train= window(ts, start=c(2011,7), end=c(2017,6))
 fit9 =HoltWinters(train)
 fit9
+```
 
+17. Compute the predicted sales from July 2017 to February 2018 with the 95% prediction
+interval. Create a plot comprising of the training data, the fitted values, the mean
+predicted value, and the prediction interval. (provide R codes, 0.5%)
+
+```{r}
+yhat= predict(fit9, n.ahead=8, prediction.interval=T)
+plot(fit9, yhat,type= "l")
+```
+
+18. Use your test data to compute the prediction error for each month from July 2017 to
+February 2018. Report the mean square deviation (MSD) and mean absolute deviation
+(MAD). (provide R codes, 0.5%)
+
+```{r}
+test= window(ts, start=c(2017,7), end=c(2018,2))
+mean((test-yhat[,1])^2)
+mean(abs(test-yhat[,1]))
+```
+
+19. Fit the training data with a multiplicative Halt-Winters model. What are the values of
+the smoothing parameters: alpha, beta, and gamma?
+
+```{r}
+fit10 = HoltWinters(train, seasonal= "multiplicative")
+fit10
+```
+
+20. Compute the prediction error for each month from July 2017 to February 2018 with
+the multiplicative model. Report the MSD and MAD. 
+
+```{r}
+yhat2 = predict(fit10, n.ahead=8,prediction.interval=T)
+mean((test-yhat2[,1])^2)
+mean(abs(test-yhat2[,1]))
+```
+
+21. Based on the MSD and MAD you computed, which model predicts the test data
+better? Why? (0.5%)
+
+```
+Since the MSD and MAD of the additive model is lower than the multiplicative model, we can
+conclude that the additive model better predicts the test data. This may be due to the constant
+amplitude of seasonality of this data.
+```
+
+22. Fit the training data with an additive Halt-Winters model with beta = FALSE (i.e., the
+trend is a constant value). Compute the prediction error for each month from July 2017 to
+February 2018 with the new additive model. Report the MSD and MAD.
+
+```{r}
+fit11 = HoltWinters(train, beta=F)
+yhat3 = predict(fit11, n.ahead=8, prediction.interval=T)
+test-yhat3[,1]
+mean((test-yhat3[,1])^2)
+mean(abs(test-yhat3[,1]))
+```
+
+23. Based on the MSD and MAD, is the additive model that assumes beta = 0 better than
+the additive model that estimates beta in predicting the test data set? Why?
+
+```
+As we can see, the MSD for the additive model that estimates beta is significantly lower than the
+model assuming beta=0, while the MAD is just a bit higher. The additive model that estimates
+beta in predicting the test data set is better.
+```
+
+24. Use the overall data and decompose US_sales into the trend, seasonality, and
+random. Select the model type (i.e., additive or multiplicative) that you think better fit the
+data. Plot the decomposition results over time. Comment on which months you expect to
+see the highest and lowest sales respectively.
+
+```{r}
+fit12 = decompose(ts, type="additive")
+plot(fit12, type="b")
 ```
